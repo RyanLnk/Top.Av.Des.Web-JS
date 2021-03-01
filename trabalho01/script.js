@@ -1,33 +1,36 @@
+const tbody = document.querySelector('tbody');
 const table = document.querySelector('table');
-
-let buttonAdd = document.querySelector('.btn.waves-effect.waves-light');
+const buttonAdd = document.querySelector('.btn.waves-effect.waves-light');
 
 buttonAdd.addEventListener('click', function() {
-    let inputNome = document.querySelector('#nome');
-    let nome = inputNome.value;
+    const inputNome = document.querySelector('#nome');
+    const nome = inputNome.value;
 
-    let inputSobrenome = document.querySelector('#sobrenome');
-    let sobrenome = inputSobrenome.value;
+    const inputSobrenome = document.querySelector('#sobrenome');
+    const sobrenome = inputSobrenome.value;
 
-    let tr = document.createElement('tr');
-    let tdNome = document.createElement('td');
-    let tdSobrenome = document.createElement('td');
-    let tdButtonDelete = document.createElement('td');
+    const tr = document.createElement('tr');
+    const tdNome = document.createElement('td');
+    const tdSobrenome = document.createElement('td');
+    const tdButtonDelete = document.createElement('td');
 
     tdNome.innerText = nome;
     tdSobrenome.innerText = sobrenome;
     tdButtonDelete.innerHTML = "<button class='button-delete' type='submit'><span class='button-delete-span'><i class='material-icons red-text text-accent-3'>delete_forever</i></span></button>";
 
     tdButtonDelete.addEventListener('click', function(e) {
-        e.target.parentNode.parentNode.parentNode.parentNode.remove();
+        const trDelete = tdButtonDelete.closest('tr');
+        trDelete.remove();
     });
 
     tr.appendChild(tdNome);
     tr.appendChild(tdSobrenome);
     tr.appendChild(tdButtonDelete);
 
-    table.appendChild(tr);
-    
+    tbody.appendChild(tr);
+    table.appendChild(tbody);
+
     inputNome.value = '';
+    inputNome.focus();
     inputSobrenome.value = '';
 });
