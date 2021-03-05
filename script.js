@@ -2,13 +2,23 @@ const tbody = document.querySelector('tbody');
 const table = document.querySelector('table');
 const buttonAdd = document.querySelector('.btn.waves-effect.waves-light');
 
-buttonAdd.addEventListener('click', function() {
+buttonAdd.addEventListener('click', () => {
     //pegando conteúdo do campo nome
     const inputNome = document.querySelector('#nome');
+    if (inputNome.value == '') {
+        alert("Não é possível colocar um campo em branco");
+        inputNome.focus();
+        return;
+    }
     const nome = inputNome.value;
 
     //pegando conteúdo do campo sobrenome
     const inputSobrenome = document.querySelector('#sobrenome');
+    if (inputSobrenome.value == '') {
+        alert("Não é possível colocar um campo em branco");
+        inputSobrenome.focus();
+        return;
+    }
     const sobrenome = inputSobrenome.value;
 
     //criando os elementos para adicionar a linha nova
